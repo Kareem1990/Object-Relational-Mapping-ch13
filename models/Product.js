@@ -36,14 +36,14 @@ Product.init(
     },
     category_id: {
       type: DataTypes.INTEGER,
-      allowNull: true, 
-      references: {
+      // Quick patch. Allows deletion of category. 
+      allowNull: true, // If allowNull not set to true, you cant delete a category.
+      references: { // fk join category model on id
         model: 'category',
         key: 'id'
       }
     }
   },
-
   {
     sequelize,
     timestamps: false,
