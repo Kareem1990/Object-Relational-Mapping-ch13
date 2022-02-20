@@ -1,8 +1,8 @@
 const router = require('express').Router();
+//const { Model } = require('sequelize/types');
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
-
 
 router.get('/', (req, res) => {
   // find all tags with associated Product data
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
       {
         model: Product,
         through: ProductTag,
-        as: 'productTag'
+        as: 'productTag_product'
       }
     ]
   })
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
       {
         model: Product,
         through: ProductTag,
-        as: 'productTag'
+        as: 'productTag_product'
       }
     ]
   })
